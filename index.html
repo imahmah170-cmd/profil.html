@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Muhammad Iqbal Maulana, Mahasiswa Pendidikan Teknologi Informasi Universitas Negeri Surabaya (UNESA).">
+  <title>Muhammad Iqbal Maulana</title>
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg-dark: #121824;
+      --card-bg: #272d3d;
+      --card-border: rgba(255, 255, 255, 0.05);
+      --accent-pink: #ec4899;
+      --accent-orange: #f97316;
+      --accent-blue: #0284c7;
+      --accent-cyan: #06b6d4;
+      --accent-yellow: #eab308;
+      --accent-whatsapp: #22c55e;
+      --text-main: #ffffff;
+      --text-muted: #94a3b8;
+      --badge-bg: rgba(255, 255, 255, 0.06);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* Section Headers */
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 18px;
+      border-radius: 2px;
+    }
+
+    .title-blue::before { background-color: var(--accent-cyan); }
+    .title-green::before { background-color: #10b981; }
+    .title-yellow::before { background-color: var(--accent-yellow); }
+    .title-pink::before { background-color: var(--accent-pink); }
+
+    /* Cards Common Style */
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Hero Section Header */
+    .hero-card {
+      padding: 32px;
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .profile-img-wrap {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #3498db;
+      background: linear-gradient(135deg, var(--accent-pink), var(--accent-blue));
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .status-badge {
+      background-color: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #34d399;
+      border-radius: 50%;
+    }
+
+    .btn-cv-profile {
+      background: linear-gradient(135deg, var(--accent-orange), var(--accent-yellow));
+      color: #000;
+      font-weight: 700;
+      width: 100%;
+      justify-content: center;
+      padding: 10px 12px;
+      font-size: 0.8rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(249, 115, 22, 0.2);
+    }
+
+    .hero-info {
+      flex: 1;
+    }
+
+    .hero-name {
+      font-size: 1.8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      background: linear-gradient(90deg, #ffffff, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 4px;
+    }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-bio {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    /* Buttons */
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s;
+    }
+
+    .btn:hover { opacity: 0.9; }
+
+    .btn-gradient {
+      background: linear-gradient(135deg, var(--accent-pink), var(--accent-orange));
+    }
+
+    .btn-blue {
+      background-color: var(--accent-blue);
+    }
+
+    .btn-whatsapp {
+      background-color: #16a34a;
+    }
+
+    .btn-tiktok {
+      background-color: #334155;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-outline {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #cbd5e1;
+    }
+
+    /* Grid Layouts */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* Feature Cards */
+    .feature-card .icon-box {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+
+    .feature-card h4 {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Education Card */
+    .edu-card .badge-year {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #34d399;
+      background: rgba(52, 211, 153, 0.1);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .edu-card h4 {
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+
+    .edu-card .inst {
+      font-size: 0.8rem;
+      color: var(--accent-cyan);
+      margin-bottom: 10px;
+    }
+
+    .edu-card p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .profile-container {
+        width: 100%;
+      }
+
+      .btn-cv-profile {
+        max-width: 250px;
+        margin: 0 auto;
+      }
+
+      .hero-meta {
+        justify-content: center;
+      }
+
+      .btn-group {
+        justify-content: center;
+      }
+
+      .grid-3, .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- HERO HEADER -->
+    <div class="card hero-card">
+      <div class="profile-container">
+        <!-- Foto Profil (Ganti src dengan path/link gambar Anda) -->
+        <div class="profile-img-wrap">
+          <img src="profil.jpeg" alt="Muhammad Iqbal Maulana" class="profile-img">
+        </div>
+        
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          Mahasiswa Aktif UNESA
+        </div>
+        
+        <!-- TOMBOL CV PDF -->
+        <a href="cv.web.pdf" download target="_blank" class="btn btn-cv-profile">
+          <i class="fa-solid fa-file-pdf"></i> CV PDF
+        </a>
+      </div>
+
+      <div class="hero-info">
+        <h1 class="hero-name">Muhammad Iqbal Maulana</h1>
+        <div class="hero-sub">UNIVERSITAS NEGERI SURABAYA</div>
+        <div class="hero-sub">S1 PENDIDIKAN TEKNOLOGI INFORMASI</div>
+        
+        <div class="hero-meta">
+          <span><i class="fa-solid fa-location-dot"></i> Yosowilangun, Lumajang, Jawa Timur</span>
+          <span><i class="fa-solid fa-id-card"></i> NIM: 26050974013</span>
+        </div>
+
+        <p class="hero-bio">
+          Halo! Saya Iqbal, mahasiswa S1 Pendidikan Teknologi Informasi di Universitas Negeri Surabaya. Minat utama saya ada di seputar web development, pemrograman Python, dan pengembangan media pembelajaran interaktif. Senang belajar hal baru, berdiskusi bareng di komunitas, dan membuat project kecil yang bermanfaat.
+        </p>
+
+        <div class="btn-group">
+          <a href="https://instagram.com/limities_" target="_blank" class="btn btn-gradient">
+            <i class="fa-brands fa-instagram"></i> Instagram
+          </a>
+          <a href="https://www.tiktok.com/@IQBAL_____15" target="_blank" class="btn btn-tiktok">
+            <i class="fa-brands fa-tiktok"></i> TikTok
+          </a>
+          <a href="https://wa.me/6281553853038" target="_blank" class="btn btn-whatsapp">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+          </a>
+          <a href="https://www.linkedin.com/in/muhammad-iqbal-maulana-363461441" target="_blank" class="btn btn-blue">
+            <i class="fa-brands fa-linkedin"></i> LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- KEAHLIAN SAYA -->
+    <div>
+      <h2 class="section-title title-blue">Keahlian Saya</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div class="card feature-card">
+          <div class="icon-box" style="background: rgba(34, 183, 78, 0.15); color: #22c55e;"><i class="fa-solid fa-network-wired"></i></div>
+          <h4>Jaringan & Hardware Dasar</h4>
+          <p>Pengkabelan & LAN, Setting MikroTik Dasar, serta perakitan PC, instalasi OS secara profesional.</p>
+        </div>
+        <div class="card feature-card">
+          <div class="icon-box" style="background: rgba(249, 115, 22, 0.15); color: var(--accent-orange);"><i class="fa-solid fa-code"></i></div>
+          <h4>Web & Database Dasar</h4>
+          <p>Pengembangan HTML & CSS dasar, pengolahan MySQL, serta pengoperasian editor kode seperti VS Code.</p>
+        </div>
+        <div class="card feature-card">
+          <div class="icon-box" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;"><i class="fa-solid fa-file-word"></i></div>
+          <h4>Tools & Aplikasi</h4>
+          <p>Terbiasa mengoperasikan Microsoft Office untuk penyusunan dokumen, laporan, maupun kebutuhan administratif.</p>
+        </div>
+        <div class="card feature-card">
+          <div class="icon-box" style="background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan);"><i class="fa-solid fa-router"></i></div>
+          <h4>Networking / MikroTik</h4>
+          <p>Pemahaman dasar konfigurasi perangkat jaringan dan manajemen koneksi internet menggunakan router MikroTik.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PENGALAMAN ORGANISASI -->
+    <div>
+      <h2 class="section-title title-blue">Pengalaman Organisasi & Kepanitiaan</h2>
+      <div class="card edu-card">
+        <span class="badge-year">2023 - 2024</span>
+        <h4>SMK AL-MALIKI</h4>
+        <div class="inst">KETUA OSIS</div>
+        <p>Memimpin organisasi kesiswaan, mengelola alur kerja pengurus, menyusun program kerja tahunan, dan menjadi penghubung antara siswa dengan pihak sekolah.</p>
+        
+        <div style="margin-top: 16px;"></div>
+        <span class="badge-year">2024 — 2025</span>
+        <h4>SMK AL-MALIKI</h4>
+        <div class="inst">ANGGOTA OSIS</div>
+        <p>Berpartisipasi aktif dalam pelaksanaan program kerja kesiswaan dan mendukung koordinasi kegiatan sekolah.</p>
+        
+        <div style="margin-top: 16px;"></div>
+        <span class="badge-year">2024</span>
+        <h4>SMK AL-MALIKI</h4>
+        <div class="inst">PANITIA / PESERTA AKTIF</div>
+        <p>Mengikuti dan membantu kelancaran kegiatan pelatihan kepemimpinan siswa (LDKS) untuk membangun karakter serta kedisiplinan pengurus baru.</p>
+        
+        <div style="margin-top: 16px;"></div>
+        <span class="badge-year">2022 - 2025</span>
+        <h4>PANITIA PELAKSANA SMK AL-MALIKI</h4>
+        <div class="inst">PANITIA WISUDAWAN & WISUDAWATI</div>
+        <p>Bertanggung jawab dalam mengoordinasikan jalannya rangkaian acara pelepasan siswa-siswi, penataan tempat, serta pelayanan teknis demi kelancaran prosesi wisuda.</p>
+        
+        <div style="margin-top: 16px;"></div>
+        <span class="badge-year">2024</span>
+        <h4>PANITIA PELAKSANA SMK AL-MALIKI</h4>
+        <div class="inst">PANITIA GEBYAR SHOLAWAT</div>
+        <p>Ikut serta mengoordinasikan persiapan, penataan lokasi, dan kelancaran jalannya acara keagamaan Gebyar Sholawat di lingkungan sekolah.</p>
+      </div>
+    </div>
+
+    <!-- PENDIDIKAN & SERTIFIKAT -->
+    <!-- PENDIDIKAN - VERSI RAPI -->
+<section class="pendidikan">
+  <h2>Pendidikan</h2>
+
+  <div class="card-pendidikan">
+    <span class="tahun">2026 — Sekarang</span>
+    <h3>S1 PENDIDIKAN TEKNOLOGI INFORMASI</h3>
+    <h4>UNIVERSITAS NEGERI SURABAYA</h4>
+    <p>Fakultas Teknik. Fokus pada rekayasa perangkat lunak, sistem basis data, dan jaringan komputer.</p>
+  </div>
+
+  <div class="card-pendidikan">
+    <span class="tahun">2023 — 2026</span>
+    <h3>TEKNIK KOMPUTER & JARINGAN</h3>
+    <h4>SMK AL-MALIKI</h4>
+    <p>Mempelajari perakitan komputer, MikroTik dasar, instalasi OS, dan routing jaringan dasar.</p>
+  </div>
+
+</section>
+
+<style>
+.pendidikan {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* ini yang bikin gak numpuk */
+}
+.card-pendidikan {
+  background: #2a3441;
+  padding: 20px;
+  border-radius: 16px;
+  position: relative;
+  z-index: 1;
+}
+.tahun {
+  background: #3a4a5a;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+</style>
+
+    <!-- FOOTER CTA -->
+    <div class="card cta-card">
+      <h3>Tertarik Diskusi atau Kolaborasi?</h3>
+      <p>Pintu komunikasi selalu terbuka untuk diskusi project, sharing teknologi, tugas kuliah, atau sekadar kenalan di medsos.</p>
+      
+      <div class="btn-group" style="justify-content: center;">
+        <a href="https://instagram.com/limities_" target="_blank" class="btn btn-gradient">
+          <i class="fa-brands fa-instagram"></i> Instagram
+        </a>
+        <a href="https://www.tiktok.com/@IQBAL_____15" target="_blank" class="btn btn-tiktok">
+          <i class="fa-brands fa-tiktok"></i> TikTok
+        </a>
+        <a href="https://wa.me/6281553853038" target="_blank" class="btn btn-whatsapp">
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="https://www.linkedin.com/in/muhammad-iqbal-maulana-363461441" target="_blank" class="btn btn-blue">
+          <i class="fa-brands fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="mailto:26050974013@mhs.unesa.ac.id" class="btn btn-outline">
+          <i class="fa-regular fa-envelope"></i> Email Kampus
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
